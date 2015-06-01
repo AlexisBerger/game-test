@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.Classe.Chunk;
 import com.mygdx.Classe.Cube;
 
 import java.util.Random;
@@ -30,7 +31,7 @@ public class main implements ApplicationListener {
     public PerspectiveCamera cam;
     public CameraInputController camController;
     public ModelBatch modelBatch;
-    public Array<ModelInstance> instance = new Array<ModelInstance>();
+    public Chunk instance;
     public Cube blockInstance;
     public Texture texture;
 
@@ -51,17 +52,9 @@ public class main implements ApplicationListener {
         cam.far = 300f;
         cam.update();
 
-        texture = new Texture(filePath);
+        instance = new Chunk();
 
-        for (float x = -5f; x <= 5f; x += 5f) {
-            for (float y = -5f; y <= 5f; y += 5f) {
-                for (float z = -5f; z <= 5f; z += 5f) {
-                    blockInstance = new Cube(texture);
-                    blockInstance.setPosition(x, y, z);
-                    instance.add(blockInstance);
-                }
-            }
-        }
+
         camController = new CameraInputController(cam);
         Gdx.input.setInputProcessor(camController);
     }
@@ -81,7 +74,7 @@ public class main implements ApplicationListener {
     @Override
     public void dispose() {
         modelBatch.dispose();
-        blockInstance.dispose();
+
     }
 
     @Override

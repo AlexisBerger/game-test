@@ -35,9 +35,9 @@ public class Cube extends ModelInstance {
         super(modelBuilder.createBox(width, height, depth,
                 new Material(TextureAttribute.createDiffuse(texture)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal));
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
+        this.setWidth(width);
+        this.setHeight(height);
+        this.setDepth(depth);
     }
     public Cube(Texture texture) {
         super(modelBuilder.createBox(WIDTH, HEIGHT, DEPTH,
@@ -49,5 +49,33 @@ public class Cube extends ModelInstance {
     }
     public void setPosition(Float x,Float y,Float z){
         this.transform.setToTranslation(x,y,z);
+    }
+
+    /*
+     *   Getter Setter
+     */
+
+    public Float getWidth() {
+        return width;
+    }
+
+    public void setWidth(Float width) {
+        this.width = width;
+    }
+
+    public Float getHeight() {
+        return height;
+    }
+
+    public void setHeight(Float height) {
+        this.height = height;
+    }
+
+    public Float getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Float depth) {
+        this.depth = depth;
     }
 }
